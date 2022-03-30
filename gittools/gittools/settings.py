@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['alissonthecrow.pythonanywhere.com', '127.0.0.1:8000', '127.0.0
 # Application definition
 
 INSTALLED_APPS = [
+    'searchapp.apps.SearchappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,6 +80,19 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+"""
 
 
 # Password validation
