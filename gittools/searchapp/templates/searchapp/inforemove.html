@@ -15,7 +15,7 @@
     {% else %}
     <h3>No repository was selected. Nothing to remove!</h3>
     {% endif %}
-    <form method="POST" action="stars">
+    <form method="POST" action="saved">
     {% csrf_token %}
         <input type="submit" name="back_to_index_button" value="Go back">
     </form>
