@@ -8,7 +8,27 @@
     <title>Git search - saved</title>
 </head>
 <body>
-    <h1>Git search</h1>
-    <p>'Saved' page</p>
+    <nav><a href="/searchapp">HOME</a> <a href="saved">SAVED</a></nav>
+    
+    <h3>Saved repositories</h3>
+    {% if existing_repositories %}
+    <form method="POST" action="inforemove">
+        {% csrf_token %}
+        <div>
+            <ul>
+            {% for repo in existing_repositories %}
+                <li>
+                    <label for="{{ repo.0 }}"> {{ repo.1 }}: {{ repo.0 }}</label>
+                    <input type="checkbox" name="repository_{{ repo.0 }}" value="">
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <p>Remove selected repositories?</p>
+        <input type="submit" name="remove_button_pressed" value="Remove">
+    </form>
+    {% else %}
+    <p>No repository has been saved!</p>
+    {% endif %}
 </body>
 </html>

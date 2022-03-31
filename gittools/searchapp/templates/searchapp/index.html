@@ -8,7 +8,63 @@
     <title>Git search - home</title>
 </head>
 <body>
-    <h1>Git search</h1>
-    <p>'Home' page</p>
+    <nav><a href="/searchapp">HOME</a> <a href="saved">SAVED</a></nav>
+    
+    <!-- Only search field -->
+    {% if not repo_save and git_response_dict == None %}
+    <h3>Featured repositories on GitHub</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="">Select a language and click on "Search" button</label>
+
+            <select name="programming_lang">
+                <option disabled selected value="None">Select a language</option>
+                <option value="C">C</option>
+                <option value="Elixir">Elixir</option>
+                <option value="Python">Python</option>
+                <option value="PHP">PHP</option>
+                <option value="Rust">Rust</option>
+            </select><input type="submit" value="Search" name="search_lang_button_pressed">
+
+        </div>
+    </form>
+    {% endif %}
+
+    <!-- Repo list -->
+    {% if not repo_save and git_response_dict != None %}
+    <h3>Featured {{ programming_lang }} repositories on GitHub</h3>
+    <form method="POST" action="infosave">
+        {% csrf_token %}
+        <div>
+            <ul>
+            {% for repo in git_response_dict.items %}
+                {% if repo.name not in existing_repositories %}
+                <li>
+                    <label for="{{ repo.id }}"> {{ repo.name }}</label>
+                    <input type="checkbox" id="{{ repo.id }}"
+                        name="repository_{{ repo.id }}_{{ repo.name }}_{{ programming_lang }}" value="">
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        <p>Save selected repositories?</p>
+        <input type="submit" name="save_button_pressed" value="Save">
+    </form>
+    {% endif %}
+
+    <!-- Saved repo info -->
+    <!--
+    {% if repo_save %}
+    <h3>The selected repositories have been saved!</h3>
+    <form method="POST">
+    {% csrf_token %}
+        <input type="submit" name="back_to_index_button" value="Search again">
+    </form>
+    {% endif %}
+    -->
+
 </body>
 </html>

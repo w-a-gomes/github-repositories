@@ -8,7 +8,17 @@
     <title>Git search - Save info</title>
 </head>
 <body>
-    <h1>Git search</h1>
-    <p>'Save info' page</p>
+    <nav><a href="/searchapp">HOME</a> <a href="saved">SAVED</a></nav>
+    
+    {% if repo_save %}
+    <h3>The selected repositories have been saved!</h3>
+    {% else %}
+    <h3>No repository was selected. Nothing to save!</h3>
+    {% endif %}
+
+    <form method="POST" action="/searchapp/">
+    {% csrf_token %}
+        <input type="submit" name="back_to_index_button" value="Search again">
+    </form>
 </body>
 </html>

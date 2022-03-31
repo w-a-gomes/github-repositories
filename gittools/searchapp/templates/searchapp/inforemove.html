@@ -8,7 +8,16 @@
     <title>Git search - Remove info</title>
 </head>
 <body>
-    <h1>Git search</h1>
-    <p>'Remove info' page</p>
+    <nav><a href="/searchapp">HOME</a> <a href="saved">SAVED</a></nav>
+
+    {% if repo_remove %}
+    <h3>The selected repositories have been removed!</h3>
+    {% else %}
+    <h3>No repository was selected. Nothing to remove!</h3>
+    {% endif %}
+    <form method="POST" action="stars">
+    {% csrf_token %}
+        <input type="submit" name="back_to_index_button" value="Go back">
+    </form>
 </body>
 </html>
