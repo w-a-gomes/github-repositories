@@ -1,7 +1,8 @@
 # from django.http import HttpResponse
-from django.shortcuts import render
-from .models import GitRepo
+import requests
 
+from django.shortcuts import render, redirect
+from .models import GitRepo
 
 def index(request):
 	return render(request, 'searchapp/index.html', {})
