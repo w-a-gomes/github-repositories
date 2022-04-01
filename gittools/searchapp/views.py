@@ -69,7 +69,14 @@ def infosave(request):
 
 
 def saved(request):
-    existing_repositories = [(x.name, x.lang) for x in GitRepo.objects.all()]
+    # existing_repositories = [(x.name, x.lang) for x in GitRepo.objects.all()]
+    existing_repositories = []
+    for language in ['C', 'Elixir', 'PHP', 'Python', 'Rust']:
+        for repo in GitRepo.objects.all():
+            if repo.lang == language:
+                space_decoration = ('__________')[:10 - len(repo.lang)]
+                existing_repositories.append((repo.lang, space_decoration, repo.name))
+
     return render(request, 'searchapp/saved.html', {
         'existing_repositories': existing_repositories,
     })

@@ -16,19 +16,16 @@
 
     <form method="POST">
         {% csrf_token %}
-        <div>
-            <label for="">Select a language and click on "Search" button</label>
-
-            <select name="programming_lang">
-                <option disabled selected value="None">Select a language</option>
-                <option value="C">C</option>
-                <option value="Elixir">Elixir</option>
-                <option value="Python">Python</option>
-                <option value="PHP">PHP</option>
-                <option value="Rust">Rust</option>
-            </select><input type="submit" value="Search" name="search_lang_button_pressed">
-
-        </div>
+        <label for="">Select a language and click on "Search" button</label>
+        <br>
+        <select name="programming_lang">
+            <option disabled selected value="None">Select a language</option>
+            <option value="C">C</option>
+            <option value="Elixir">Elixir</option>
+            <option value="Python">Python</option>
+            <option value="PHP">PHP</option>
+            <option value="Rust">Rust</option>
+        </select><input class="input_select" type="submit" value="Search" name="search_lang_button_pressed">
     </form>
     {% endif %}
 
@@ -42,16 +39,15 @@
             {% for repo in git_response_dict.items %}
                 {% if repo.name not in existing_repositories %}
                 <li>
+                    <input type="checkbox" name="repository_{{ repo.id }}_{{ repo.name }}_{{ programming_lang }}" value="">
                     <label for="{{ repo.id }}"> {{ repo.name }}</label>
-                    <input type="checkbox" id="{{ repo.id }}"
-                        name="repository_{{ repo.id }}_{{ repo.name }}_{{ programming_lang }}" value="">
                 </li>
                 {% endif %}
             {% endfor %}
             </ul>
         </div>
         <p>Save selected repositories?</p>
-        <input type="submit" name="save_button_pressed" value="Save">
+        <input class="input_button" type="submit" name="save_button_pressed" value="Save">
     </form>
     {% endif %}
 
