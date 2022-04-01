@@ -54,6 +54,18 @@ select {
     margin: 20px 0px 20px 0px;
 }
 
+p {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    text-align: left;
+    padding: 2px;
+    font-size: 15px;
+    font-family: 'Red Hat Mono', monospace;
+}
+
 .input_button {
     background-color: #EF0044;
     color: #FFF;
@@ -76,18 +88,6 @@ select {
 
 .input_select:hover {
     background-color: #FF5686;
-}
-
-p {
-    text-align: center;
-}
-
-li {
-    list-style: none;
-    text-align: left;
-    padding: 2px;
-    font-size: 15px;
-    font-family: 'Red Hat Mono', monospace;
 }
 
 .label_space_decoration {
