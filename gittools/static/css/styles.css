@@ -78,6 +78,10 @@ select {
     background-color: #FF5686;
 }
 
+p {
+    text-align: center;
+}
+
 li {
     list-style: none;
     text-align: left;
