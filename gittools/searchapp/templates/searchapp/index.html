@@ -39,7 +39,7 @@
             {% for repo in git_response_dict.items %}
                 {% if repo.name not in existing_repositories %}
                 <li>
-                    <input type="checkbox" name="repository_{{ repo.id }}_{{ repo.name }}_{{ programming_lang }}" value="">
+                    <input type="checkbox" name="repository//{{ repo.id }}//{{ repo.name }}//{{ programming_lang }}" value="">
                     <label for="{{ repo.id }}"> {{ repo.name }}</label>
                 </li>
                 {% endif %}

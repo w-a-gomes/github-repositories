@@ -45,8 +45,8 @@ def infosave(request):
         if 'save_button_pressed' in request.POST:
 
             for request_post in request.POST:
-                if 'repository_' in request_post[:len('repository_')]:
-                    _repo_prefix, repo_id, repo_name, repo_lang = request_post.split('_')
+                if 'repository//' in request_post[:len('repository//')]:
+                    _repo_prefix, repo_id, repo_name, repo_lang = request_post.split('//')
                     
                     # Check duplicates and save
                     if repo_name not in existing_repositories:
@@ -65,7 +65,6 @@ def infosave(request):
 
     # return render(request, 'searchapp/infosave.html', {})
     return redirect(index)
-    
 
 
 def saved(request):
@@ -88,8 +87,8 @@ def inforemove(request):
         if 'remove_button_pressed' in request.POST:
 
             for request_post in request.POST:
-                if 'repository_' in request_post[:len('repository_')]:
-                    _repository_prefix, repository_name = request_post.split('_')
+                if 'repository//' in request_post[:len('repository//')]:
+                    _repository_prefix, repository_name = request_post.split('//')
 
                     # Remove
                     gr = GitRepo.objects.get(name=repository_name)
