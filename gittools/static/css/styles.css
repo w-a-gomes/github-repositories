@@ -117,3 +117,13 @@ label a:hover {
     font-size: 12px;
     color: #555;
 }
+
+#parallel_button {
+    width: auto;
+    height: auto;
+    text-align: left;
+}
+.parallel_button {
+    position: relative;
+    float: right;
+}
