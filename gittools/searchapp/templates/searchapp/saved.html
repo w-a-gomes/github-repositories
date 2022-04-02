@@ -18,11 +18,39 @@
             <ul>
             {% for repo in existing_repositories %}
                 <li>
-                    <!-- 0=lang, 1=space, 2=repo_name -->
-                    <label class="label_language_name" for="{{ repo.0 }}">{{ repo.0 }}</label>
-                    <label class="label_space_decoration" for="{{ repo.0 }}">{{ repo.1 }}</label>
-                    <input type="checkbox" name="repository//{{ repo.2 }}" value="">
-                    <label for="{{ repo.0 }}">{{ repo.2 }}</label>
+                    <!-- Lang -->
+                    <label class="label_language_name" for="{{ repo.id }}">
+                        {{ repo.lang }}
+                    </label>
+                    
+                    <!-- Decoration -->
+                    <label class="label_space_decoration" for="{{ repo.id }}">
+                        {{ repo.space_decoration }}
+                    </label>
+                    
+                    <!-- Checkbox -->
+                    <input type="checkbox" name="repository✱{{ repo.name }}" value="">
+                    
+                    <!-- Name -->
+                    <label for="{{ repo.id }}">
+                        <a href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a>
+                    </label>
+
+                    <!-- Stars -->
+                    <label class="label_star" for="{{ repo.id }}">
+                        ⭐{{ repo.stargazers_count }}
+                    </label>
+
+                    <!-- Description decoration -->
+                    <br>
+                    <label class="label_space_decoration" for="{{ repo.id }}">
+                        {{ repo.space_description }}
+                    </label>
+
+                    <!-- Description -->
+                    <label class="label_description" for="{{ repo.id }}">
+                        {{ repo.description }}
+                    </label>
                 </li>
             {% endfor %}
             </ul>

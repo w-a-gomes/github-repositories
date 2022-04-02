@@ -52,6 +52,7 @@ select {
     border: 0px;
     border-radius: 3px 0px 0px 3px;
     margin: 20px 0px 20px 0px;
+    background-color: #DDD;
 }
 
 p {
@@ -61,9 +62,18 @@ p {
 li {
     list-style: none;
     text-align: left;
-    padding: 2px;
     font-size: 15px;
+    padding: 0px 0px 15px 0px;
     font-family: 'Red Hat Mono', monospace;
+}
+
+label a, label a:active, label a:visited {
+    color: #EF0044;
+    text-decoration: none;
+}
+
+label a:hover {
+    text-decoration: underline;
 }
 
 .input_button {
@@ -86,7 +96,7 @@ li {
     margin: 20px 0px 20px 0px;
 }
 
-.input_select:hover {
+.input_select:hover, .input_button:hover {
     background-color: #FF5686;
 }
 
@@ -96,4 +106,14 @@ li {
 
 .label_language_name {
     color: #888;
+}
+
+.label_description {
+    color: #555;
+    font-size: 12px;
+}
+
+.label_star {
+    font-size: 12px;
+    color: #555;
 }

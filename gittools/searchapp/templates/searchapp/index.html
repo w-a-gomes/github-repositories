@@ -11,7 +11,7 @@
     <nav><a href="/searchapp">HOME</a> <a href="saved">SAVED</a></nav>
     
     <!-- Only search field -->
-    {% if not repo_save and git_response_dict == None %}
+    {% if not repo_save and not git_response %}
     <h3>Featured repositories on GitHub</h3>
 
     <form method="POST">
@@ -30,17 +30,33 @@
     {% endif %}
 
     <!-- Repo list -->
-    {% if not repo_save and git_response_dict != None %}
+    {% if not repo_save and git_response %}
     <h3>Featured {{ programming_lang }} repositories on GitHub</h3>
     <form method="POST" action="infosave">
         {% csrf_token %}
         <div>
             <ul>
-            {% for repo in git_response_dict.items %}
+            {% for repo in git_response %}
                 {% if repo.name not in existing_repositories %}
                 <li>
-                    <input type="checkbox" name="repository//{{ repo.id }}//{{ repo.name }}//{{ programming_lang }}" value="">
-                    <label for="{{ repo.id }}"> {{ repo.name }}</label>
+                    <!-- Checkbox -->
+                    <input type="checkbox" name="repository✱{{ repo.id }}✱{{ repo.name }}✱{{ programming_lang }}✱{{ repo.description }}✱{{ repo.stargazers_count }}✱{{ repo.html_url }}" value="">
+
+                    <!-- Name -->
+                    <label for="{{ repo.id }}">
+                        <a href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a>
+                    </label>
+
+                    <!-- Star -->
+                    <label class="label_star" for="{{ repo.id }}">
+                        ⭐{{ repo.stargazers_count }}
+                    </label>
+                    
+                    <!-- Description -->
+                    <br>
+                    <label class="label_description" for="{{ repo.id }}">
+                        {{ repo.description }}
+                    </label>
                 </li>
                 {% endif %}
             {% endfor %}
