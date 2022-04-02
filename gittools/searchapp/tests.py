@@ -1,9 +1,11 @@
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
 
 
 class UrlViewsTests(TestCase):
     """"""
+    # 200 = ok
+    # 302 = redirect
     def test_index(self):
         """"""
         response = self.client.get(reverse('searchapp:index'))
@@ -22,9 +24,9 @@ class UrlViewsTests(TestCase):
     def test_infosave(self):
         """"""
         response = self.client.get(reverse('searchapp:infosave'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
     def test_inforemove(self):
         """"""
         response = self.client.get(reverse('searchapp:inforemove'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)

@@ -8,33 +8,40 @@ from .models import GitRepo
 
 
 def index(request):
+    # Response vars
     programming_lang = None
     git_response = []
 
+    # Search button is pressed
     if request.method == 'POST':
-
         if 'search_lang_button_pressed' in request.POST:
+
+            # Collect 'programming_lang' response var
             if 'programming_lang' in request.POST:
                 programming_lang = request.POST['programming_lang']
 
+                # A language has been chosen
                 if programming_lang != 'None':
-                    url = (
-                        'https://api.github.com/search/repositories?q=language:{}&sort=stars'
+                    response_dict = requests.get(
+                        'https://api.github.com/search/repositories?' +
+                        'q=language:{}&sort=stars'
                         .format(programming_lang)
-                    )
-                    response = requests.get(url)
-                    response_dict = response.json()
+                    ).json()
 
-                    # Show all keys | {'items': [{}, {}, {}], ...}
-                    # for i in git_response_dict['items'][0].keys():
-                    #     print(i)
-
+                    # Filter properties of 'git_response' items  
                     for repo in response_dict['items']:
+
+                        # Description len
                         if repo['description']:
-                            description = repo['description'] if len(repo['description']) < 75 else repo['description'][:72] + '...'
+                            description = (
+                                repo['description']
+                                if len(repo['description']) < 75
+                                else repo['description'][:72] + '...'
+                            )
                         else:
                             description = 'Without description'
                         
+                        # Collect 'git_response' response var
                         git_response.append({
                             'id': repo['id'],
                             'name': repo['name'],
@@ -56,17 +63,28 @@ def index(request):
 
 
 def infosave(request):
+    # Response vars
     repo_save = False
     existing_repositories = [x.name for x in GitRepo.objects.all()]
 
+    # Save button is pressed
     if request.method == 'POST':
         if 'save_button_pressed' in request.POST:
 
+            # When some repository is chosen
             for request_post in request.POST:
                 if 'repository✱' in request_post[:len('repository✱')]:
-                    _prefix, repo_id, repo_name, repo_lang, repo_description, repo_stargazers_count, repo_html_url = request_post.split('✱')
+                    (
+                        _prefix,
+                        repo_id,
+                        repo_name,
+                        repo_lang,
+                        repo_description,
+                        repo_stargazers_count,
+                        repo_html_url
+                    ) = request_post.split('✱')
                     
-                    # Check duplicates and save
+                    # Filter unsaved repositories and save
                     if repo_name not in existing_repositories:
                         gr = GitRepo(
                             name=repo_name,
@@ -76,27 +94,37 @@ def infosave(request):
                             stargazers_count=repo_stargazers_count,
                             html_url=repo_html_url,
                             pub_date=timezone.now())
+
                         gr.save()
                         repo_save = True
-                    
+            
             return render(request, 'searchapp/infosave.html', {
                 'repo_save': repo_save,
                 'existing_repositories': existing_repositories,
             })
 
-    # return render(request, 'searchapp/infosave.html', {})
+    # Redirect direct access
     return redirect(index)
 
 
 def saved(request):
-    # existing_repositories = [(x.name, x.lang) for x in GitRepo.objects.all()]
+    # Response var
     existing_repositories = []
+
+    # Sort repositories alphabetically, based on language
     for language in ['C', 'Elixir', 'PHP', 'Python', 'Rust']:
-        for repo in GitRepo.objects.all():
+        for repo in GitRepo.objects.all():  # Lazy :)
             if repo.lang == language:
+
+                # Calcule 'len' of strings and spaces | Decorations
                 space_decoration = ('__________')[:10 - len(repo.lang)]
                 space_description = '_' * 11
-                description = repo.description if len(repo.description) < 60 else repo.description[:57] + '...'
+                description = (
+                    repo.description if len(repo.description) < 60
+                    else repo.description[:57] + '...'
+                )
+                
+                # Collect 'existing_repositories' response var
                 existing_repositories.append(
                     {
                         'id': repo.id,
@@ -116,19 +144,26 @@ def saved(request):
 
 
 def inforemove(request):
+    # Response var
     repo_remove = False
+
+    # Remove button is pressed
     if request.method == 'POST':
         if 'remove_button_pressed' in request.POST:
 
+            # When some repository is chosen
             for request_post in request.POST:
                 if 'repository✱' in request_post[:len('repository✱')]:
-                    _repository_prefix, repository_name = request_post.split('✱')
+                    _prefix, repository_name = request_post.split('✱')
 
                     # Remove
                     gr = GitRepo.objects.get(name=repository_name)
                     gr.delete()
                     repo_remove = True
 
-    return render(request, 'searchapp/inforemove.html', {
-        'repo_remove': repo_remove,
-    })
+            return render(request, 'searchapp/inforemove.html', {
+                'repo_remove': repo_remove,
+            })
+
+    # Redirect direct access
+    return redirect(index)
