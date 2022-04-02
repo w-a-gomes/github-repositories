@@ -76,10 +76,6 @@ label a:hover {
     text-decoration: underline;
 }
 
-.table_td_expand {
-    width: 50%;
-}
-
 .input_button {
     background-color: #EF0044;
     color: #FFF;
@@ -120,14 +116,4 @@ label a:hover {
 .label_star {
     font-size: 12px;
     color: #555;
-}
-
-#parallel_button {
-    width: auto;
-    height: auto;
-    text-align: left;
-}
-.parallel_button {
-    position: relative;
-    float: right;
 }

@@ -15,26 +15,9 @@
     {% else %}
     <h3>No repository was selected. Nothing to remove!</h3>
     {% endif %}
-    <div class="div_table_form">
-        <table>
-            <tr>
-                <td class="table_td_expand"></td>
-                <td>
-                    <form method="POST" action="saved">
-                        {% csrf_token %}
-                        <input class="input_button" type="submit" value="Back to 'SAVED'">
-                    </form>
-                </td>
-                    
-                <td>
-                    <form method="POST" action="/searchapp/">
-                        {% csrf_token %}
-                        <input class="input_button" type="submit" value="Go to 'HOME'">
-                    </form>
-                </td>
-                <td class="table_td_expand"></td>
-            </tr>
-        </table>
-    </div>
+    <form method="POST" action="saved">
+        {% csrf_token %}
+        <input class="input_button" type="submit" value="Back to 'SAVED'">
+    </form>
 </body>
 </html>
