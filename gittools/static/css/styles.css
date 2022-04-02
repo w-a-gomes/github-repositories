@@ -76,6 +76,10 @@ label a:hover {
     text-decoration: underline;
 }
 
+.table_td_expand {
+    width: 50%;
+}
+
 .input_button {
     background-color: #EF0044;
     color: #FFF;
