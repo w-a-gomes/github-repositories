@@ -11,7 +11,7 @@ For the *Backend* we used [Django](https://www.djangoproject.com/), which is a p
 
 *Note: The following example commands assume the use of a Debian-based Linux operating system such as Ubuntu.*
 
-The tools needed to build the application locally are **Python 3** with **Pip**, **Git** and **Docker**.
+The tools needed to build the application locally are  **Python 3** with **Pip**, **Git** and **Docker**.
 
 `sudo apt install python3 python3-pip git docker docker-compose`
 
@@ -40,3 +40,4 @@ Now just create the cache folder and make the database migrations.
 🎉 Finalizado!
 
 Para testar é só rodar o servidor com `python manage.py runserver`, e acessar o endereço [127.0.0.1:8000](http://127.0.0.1:8000/) no seu navegador.
+
