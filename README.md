@@ -21,9 +21,9 @@ It only takes two steps. First we will download the project and then we will bui
 
 Use **Git** to download the project from the repository, and **Docker** to download the environment's dependencies.
 
-`git clone https://github.com/w-a-gomes/dev-hiring-challenge.git`
+`git clone https://github.com/w-a-gomes/dev-hiring-challenge.git && cd dev-hiring-challenge/`
 
-`cd dev-hiring-challenge/ && sudo groupadd docker ; sudo usermod -aG docker $USER; sudo docker-compose up -d`
+`sudo groupadd docker ; sudo usermod -aG docker $USER; sudo docker-compose up -d`
 
 **Pip** is for downloading project dependencies.
 
