@@ -22,33 +22,15 @@ def index(request):
 
                 # A language has been chosen
                 if programming_lang != 'None':
-                    response_dict = requests.get(
-                        'https://api.github.com/search/repositories?' +
-                        'q=language:{}&sort=stars'
-                        .format(programming_lang)
-                    ).json()
 
-                    # Filter properties of 'git_response' items  
-                    for repo in response_dict['items']:
-
-                        # Description len
-                        if repo['description']:
-                            description = (
-                                repo['description']
-                                if len(repo['description']) < 75
-                                else repo['description'][:72] + '...'
-                            )
-                        else:
-                            description = 'Without description'
-                        
-                        # Collect 'git_response' response var
-                        git_response.append({
-                            'id': repo['id'],
-                            'name': repo['name'],
-                            'stargazers_count': repo['stargazers_count'],
-                            'description': description,
-                            'html_url': repo['html_url'],
-                        })
+                    # Collect 'git_response' response var
+                    git_response = index_get_git_response_items(
+                        requests.get(
+                            'https://api.github.com/search/repositories?' +
+                            'q=language:{}&sort=stars'
+                            .format(programming_lang)
+                        ).json()
+                    )
 
     return render(
         request,
@@ -60,6 +42,33 @@ def index(request):
             'existing_repositories': [x.name for x in GitRepo.objects.all()],
         }
     )
+
+def index_get_git_response_items(response_dict: dict) -> list:
+    git_response = []
+    
+    # Filter properties of 'git_response' items
+    for repo in response_dict['items']:
+
+        # Description len
+        if repo['description']:
+            description = (
+                repo['description']
+                if len(repo['description']) < 75
+                else repo['description'][:72] + '...'
+            )
+        else:
+            description = 'Without description'
+        
+        # Collect 'git_response' response var
+        git_response.append({
+            'id': repo['id'],
+            'name': repo['name'],
+            'stargazers_count': repo['stargazers_count'],
+            'description': description,
+            'html_url': repo['html_url'],
+        })
+
+    return git_response
 
 
 def infosave(request):
@@ -73,6 +82,8 @@ def infosave(request):
 
             # When some repository is chosen
             for request_post in request.POST:
+
+                # Filter unsaved repositories and save
                 if 'repository✱' in request_post[:len('repository✱')]:
                     (
                         _prefix,
@@ -84,7 +95,6 @@ def infosave(request):
                         repo_html_url
                     ) = request_post.split('✱')
                     
-                    # Filter unsaved repositories and save
                     if repo_name not in existing_repositories:
                         gr = GitRepo(
                             name=repo_name,
@@ -115,26 +125,21 @@ def saved(request):
     for language in ['C', 'Elixir', 'PHP', 'Python', 'Rust']:
         for repo in GitRepo.objects.all():  # Lazy :)
             if repo.lang == language:
-
-                # Calcule 'len' of strings and spaces | Decorations
-                space_decoration = ('__________')[:10 - len(repo.lang)]
-                space_description = '_' * 11
-                description = (
-                    repo.description if len(repo.description) < 60
-                    else repo.description[:57] + '...'
-                )
                 
                 # Collect 'existing_repositories' response var
                 existing_repositories.append(
                     {
                         'id': repo.id,
                         'lang': repo.lang,
-                        'space_decoration': space_decoration,
+                        'space_decoration': ('_________')[:9 - len(repo.lang)],
                         'name': repo.name,
-                        'space_description': space_description,
-                        'description': description,
+                        'space_description': '_' * 11,
                         'stargazers_count': repo.stargazers_count,
                         'html_url': repo.html_url,
+                        'description': (
+                            repo.description if len(repo.description) < 60
+                            else repo.description[:57] + '...'
+                        ),
                     }
                 )
 

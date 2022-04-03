@@ -4,6 +4,15 @@ from django.urls import reverse, resolve
 
 class UrlViewsTests(TestCase):
     """"""
+    
+    def setUp(self):
+        pass
+
+
+    def tearDown(self):
+        pass
+
+
     # 200 = ok
     # 302 = redirect
     def test_index(self):
