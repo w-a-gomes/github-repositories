@@ -11,9 +11,9 @@ For the *Backend* we used [Django](https://www.djangoproject.com/), which is a p
 
 *Note: The following example commands assume the use of a Debian-based Linux operating system such as Ubuntu.*
 
-The tools needed to build the application locally are **Python 3** with **Pip**, **Git** and **Docker**.
+The tools needed to build the application locally are **Python 3** with **Pip** and **Venv**, **Git** and **Docker**.
 
-`sudo apt install python3 python3-pip git docker docker-compose`
+`sudo apt install -y python3 python3-pip python3-venv git docker docker-compose`
 
 It only takes two steps. First we will download the project and then we will build the application.
 
@@ -23,7 +23,7 @@ Use **Git** to download the project from the repository, and **Docker** to downl
 
 `cd ~ && git clone https://github.com/w-a-gomes/dev-hiring-challenge.git`
 
-`cd dev-hiring-challenge/ && docker-compose up -d`
+`cd dev-hiring-challenge/ && sudo docker-compose up -d`
 
 **Pip** is for downloading project dependencies.
 
