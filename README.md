@@ -27,9 +27,9 @@ Use **Git** to download the project from the repository, and **Docker** to downl
 
 **Pip** is for downloading project dependencies.
 
-`python3 -m venv venv && . venv/bin/activate`
+`python3 -m pip install --upgrade pip && python3 -m venv venv && . venv/bin/activate`
 
-`python3 -m pip install -r requirements.txt`
+`python -m pip install psycopg2-binary && python -m pip install -r requirements.txt`
 
 ### Build the application
 
@@ -37,6 +37,6 @@ Now just create the cache folder and make the database migrations.
 
 `mkdir -p db/postgresql/data/ && cd gittools && python manage.py makemigrations && python manage.py migrate`
 
-🎉 Finalizado!
+🎉 Finished!
 
-Para testar é só rodar o servidor com `python manage.py runserver`, e acessar o endereço [127.0.0.1:8000](http://127.0.0.1:8000/) no seu navegador.
+To test, just run the server with `python manage.py runserver`, and access the address [127.0.0.1:8000](http://127.0.0.1:8000/) in your browser.
