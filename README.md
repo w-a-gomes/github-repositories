@@ -23,7 +23,7 @@ Use **Git** to download the project from the repository, and **Docker** to downl
 
 `git clone https://github.com/w-a-gomes/dev-hiring-challenge.git && cd dev-hiring-challenge/`
 
-`sudo groupadd docker ; sudo usermod -aG docker $USER; sudo docker-compose up -d`
+`sudo groupadd docker ; sudo usermod -aG docker $USER; docker-compose up -d`
 
 **Pip** is for downloading project dependencies.
 
