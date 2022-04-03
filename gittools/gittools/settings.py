@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ln=x=9czqq*_z*b3n94vapa+7x5ov#g2aypd-p0(%d^65i6k1j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['alissonthecrow.pythonanywhere.com', '127.0.0.1:8000', '127.0.0.1']
+ALLOWED_HOSTS = ['*', 'alissonthecrow.pythonanywhere.com', '127.0.0.1:8000', '0.0.0.0:8000', '127.0.0.1', 'localhost', '0.0.0.0']
 
 
 # Application definition
@@ -75,14 +75,13 @@ WSGI_APPLICATION = 'gittools.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -93,7 +92,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-"""
 
 
 # Password validation
