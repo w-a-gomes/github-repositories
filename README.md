@@ -60,3 +60,11 @@ To test, just run the server with `python manage.py runserver` command, and acce
 ```console
 python manage.py runserver
 ```
+
+## Tests
+
+A test coverage report can be done with Coverage tool
+
+```console
+coverage run --source='.' manage.py test searchapp && coverage report
+```

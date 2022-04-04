@@ -8,10 +8,8 @@ class UrlViewsTests(TestCase):
     def setUp(self):
         pass
 
-
     def tearDown(self):
         pass
-
 
     # 200 = ok
     # 302 = redirect
