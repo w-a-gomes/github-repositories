@@ -13,7 +13,9 @@ For the *Backend* we used [Django](https://www.djangoproject.com/), which is a p
 
 The tools needed to build the application locally are **Python 3** with **Pip** and **Venv**, **Git** and **Docker**.
 
-`sudo apt install -y python3 python3-pip python3-venv git docker docker-compose`
+```console
+sudo apt install -y python3 python3-pip python3-venv git docker docker-compose
+```
 
 It only takes two steps. First we will download the project and then we will build the application.
 
@@ -21,15 +23,23 @@ It only takes two steps. First we will download the project and then we will bui
 
 Use **Git** to download the project from the repository, and **Docker** to download the environment's dependencies.
 
-`git clone https://github.com/w-a-gomes/dev-hiring-challenge.git && cd dev-hiring-challenge/`
+```console
+git clone https://github.com/w-a-gomes/dev-hiring-challenge.git && cd dev-hiring-challenge/
+```
 
-`sudo groupadd docker ; sudo usermod -aG docker $USER ; docker-compose up -d`
+```console
+sudo groupadd docker ; sudo usermod -aG docker $USER ; docker-compose up -d
+```
 
 **Pip** is for downloading project dependencies.
 
-`python3 -m pip install --upgrade pip && python3 -m venv venv && . venv/bin/activate`
+```console
+python3 -m pip install --upgrade pip && python3 -m venv venv && . venv/bin/activate
+```
 
-`python -m pip install psycopg2-binary && python -m pip install -r requirements.txt`
+```console
+python -m pip install psycopg2-binary && python -m pip install -r requirements.txt
+```
 
 ### Build the application
 
@@ -39,7 +49,9 @@ Now just create the cache folder and make the database migrations.
 mkdir -p db/postgresql/data/ && cd gittools/
 ```
 
-`python manage.py makemigrations && python manage.py migrate`
+```console
+python manage.py makemigrations && python manage.py migrate
+```
 
 🎉 Finished!
 
