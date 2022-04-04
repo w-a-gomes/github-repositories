@@ -5,7 +5,7 @@ This application is an exercise that will search the most relevant github reposi
 
 The application is [deployed](https://alissonthecrow.pythonanywhere.com/) and available for testing
 
-For the *Backend* we used [Django](https://www.djangoproject.com/), which is a popular [Python](https://www.python.org/) web framework, while Frontend uses HTM and pure CSS. *Data persistence* was built into a [PostgreSQL](https://www.postgresql.org) *database*, all in a development environment running on top of [Docker](https://www.docker.com).
+For the *Backend* we used [Django](https://www.djangoproject.com/), which is a popular [Python](https://www.python.org/) web framework, while Frontend uses HTML and pure CSS. *Data persistence* was built into a [PostgreSQL](https://www.postgresql.org) *database*, all in a development environment running on top of [Docker](https://www.docker.com).
 
 ## Installation
 
@@ -23,7 +23,7 @@ Use **Git** to download the project from the repository, and **Docker** to downl
 
 `git clone https://github.com/w-a-gomes/dev-hiring-challenge.git && cd dev-hiring-challenge/`
 
-`sudo groupadd docker ; sudo usermod -aG docker $USER; docker-compose up -d`
+`sudo groupadd docker ; sudo usermod -aG docker $USER ; docker-compose up -d`
 
 **Pip** is for downloading project dependencies.
 
@@ -35,7 +35,11 @@ Use **Git** to download the project from the repository, and **Docker** to downl
 
 Now just create the cache folder and make the database migrations.
 
-`mkdir -p db/postgresql/data/ && cd gittools && python manage.py makemigrations && python manage.py migrate`
+```console
+mkdir -p db/postgresql/data/ && cd gittools/
+```
+
+`python manage.py makemigrations && python manage.py migrate`
 
 🎉 Finished!
 
