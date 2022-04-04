@@ -57,7 +57,7 @@ def index_get_git_response_items(response_dict: dict) -> list:
                 else repo['description'][:72] + '...'
             )
         else:
-            description = 'Without description'
+            description = 'Without description'  # pragma: no cover
         
         # Collect 'git_response' response var
         git_response.append({

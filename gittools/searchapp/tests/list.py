@@ -24,18 +24,7 @@ class ListTests(TestCase):
             self.assertIn('description', repo)
             self.assertIn('html_url', repo)
 
-
-class CListTests(TestCase):
-    """"""
-    def test_elixir_repos(self):
-        response = index_get_git_response_items(
-            requests.get(
-                'https://api.github.com/search/repositories?' +
-                'q=language:Elixir&sort=stars'
-            ).json()
-        )
-        repo_list = []
-        for repo in response:
-            repo_list.append(repo['name'])
-
-        self.assertIn('elixir', repo_list)
+    def test_index(self):
+        """"""
+        # TODO
+        self.assertTrue(True)
