@@ -40,3 +40,11 @@ To test, just run the app with `start-app` script, and access the address [127.0
 ```console
 ./start-app
 ```
+
+## Tests
+
+A test coverage report can be done with Coverage tool
+
+```console
+coverage run --source='.' gittools/manage.py test searchapp && coverage report
+```
