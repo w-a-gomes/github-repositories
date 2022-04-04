@@ -55,4 +55,8 @@ python manage.py makemigrations && python manage.py migrate
 
 🎉 Finished!
 
-To test, just run the server with `python manage.py runserver`, and access the address [127.0.0.1:8000](http://127.0.0.1:8000/) in your browser.
+To test, just run the server with `python manage.py runserver` command, and access the address [127.0.0.1:8000](http://127.0.0.1:8000/) in your browser.
+
+```console
+python manage.py runserver
+```
