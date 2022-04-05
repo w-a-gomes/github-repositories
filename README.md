@@ -17,11 +17,7 @@ The tools needed to build the application locally are **Python 3** with **Pip** 
 sudo apt install -y python3 python3-pip python3-venv git docker docker-compose
 ```
 
-It only takes two steps. First we will download the project and then we will build the application.
-
-### Downloading the project
-
-Use **Git** to download the project from the repository
+Use Git to download the project from the repository
 
 ```console
 git clone https://github.com/w-a-gomes/dev-hiring-challenge.git
@@ -39,4 +35,24 @@ To test, just run the app with `start-app` script, and access the address [127.0
 
 ```console
 ./start-app
+```
+
+## Tests
+
+Activate the virtual environment
+
+```console
+. venv/bin/activate && cd gittools/
+```
+
+Run the tests
+
+```console
+python manage.py test searchapp
+```
+
+A test coverage report can be done with Coverage tool
+
+```console
+coverage run --source='.' manage.py test searchapp && coverage report
 ```
