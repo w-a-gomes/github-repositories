@@ -1,9 +1,6 @@
-# dev-hiring-challenge
-[Ateliware hiring challenge for devs](https://github.com/ateliware/dev-hiring-challenge)
+## github-repositories
 
 This application is an exercise that will search the most relevant github repositories in C, Elixir, Python, PHP and Rust languages.
-
-The application is [deployed](https://alissonthecrow.pythonanywhere.com/) and available for testing
 
 For the *Backend* we used [Django](https://www.djangoproject.com/), which is a popular [Python](https://www.python.org/) web framework, while Frontend uses HTML and pure CSS. *Data persistence* was built into a [PostgreSQL](https://www.postgresql.org) *database*, all in a development environment running on top of [Docker](https://www.docker.com).
 
@@ -20,13 +17,13 @@ sudo apt install -y python3 python3-pip python3-venv git docker docker-compose
 Use Git to download the project from the repository
 
 ```console
-git clone https://github.com/w-a-gomes/dev-hiring-challenge.git
+git clone https://github.com/w-a-gomes/github-repositories.git
 ```
 
 Run the install script
 
 ```console
-cd dev-hiring-challenge/ && sudo sh install.sh
+cd github-repositories/ && sudo sh install.sh
 ```
 
 🎉 Finished!
