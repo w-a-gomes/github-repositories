@@ -17,7 +17,7 @@ sudo apt install -y python3 python3-pip python3-venv git docker docker-compose
 Use Git to download the project from the repository
 
 ```console
-git clone https://github.com/w-a-gomes/github-repositories.git
+git clone https://github.com/ali55on/github-repositories.git
 ```
 
 Run the install script
